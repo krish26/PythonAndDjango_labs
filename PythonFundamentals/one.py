@@ -186,8 +186,6 @@ for item1,item2 in mypairs:
 #if 3 values then error coz too many values 
 
 
-"""
-
 
 
 
@@ -198,6 +196,142 @@ i=1
 while i < 5:
     print("i is : {} " .format(i))
     i+=1
+
+    
+
+    #11 dec 
+
+    #list comprehension
+
+    x=[1,2,3]
+out=[]
+
+for item in x:
+    out.append(item**2)
+x=[1,2,3]
+
+print([item**2 for item in x])
+
+
+def hello():
+    print('hello')
+
+hello()
+def giveMeHello():
+    return "Hello"
+
+result=giveMeHello()
+print(result)
+
+
+def even(num):  # we can also use if but this is easy 
+   
+   print(f"im checking to see if {num} is even !")
+   print(num % 2 ==0)
+
+even(41)
+
+def helloYou(name='default'):
+   return(f'hello {name} , have a nice day !')
+result=helloYou('koumudi')
+print(result)
+
+
+#fn to add 2 num only if eeven
+def addEvenOnly(num1,num2):
+    '''
+    Docstring for addEvenOnly
+    INPUT : two numbers 
+    OUTPUT: False if both numbers are not even ,
+    the sum if both numbers are even 
+   
+    '''
+    if(num1 %2 !=0) or (num2%2 !=0):
+        return False
+    else:
+        return (num1+num2)
+
+x=addEvenOnly(1,2)
+y=addEvenOnly(2,2)
+print(x)
+print(y)
+
+#lamda expression or anonimus fn
+
+def timestwi(num):
+    return num *2
+
+result =timestwi(10)
+
+    
+lambda num:num *2 
+
+my_list=[1,2,3,4,6,7,8,9]
+
+def evenbool(num):
+    return num %2 ==0
+evens=filter(evenbool,my_list)
+print(list(evens))
+
+
+#with lambda
+
+evens=filter(lambda num: num %2==0,my_list)
+print(list(evens))
+
+
+st='hello my name is koumudi'
+st.lower() # these are methods of string not functions
+st.upper()
+st.split()
+ 
+def fun (*args):
+    print(args)
+fun()
+fun(1)
+fun(1,2)
+
+
+def fun2(a,b, **kwargs): #kwargs give dictonary
+    print(a,b)
+    print(kwargs)
+
+fun2(1,2,c=10,d=11)
+
+#can use this for cal, passing arg to other fn 
+def fun3(a,b, *args , name='koumu' , **kwargs):
+    print('a={}'.format(a))
+    print('b={}'.format(b))
+    print('args={}'.format(args))
+    print('name={}'.format(name))
+    print('kwargs={}'.format(kwargs))
+
+fun3(1,2,3,name='krishna' , age=28,email='koumudi@email.com')
+
+"""
+
+
+
+
+num=[1,2,3,4]
+
+def even(num):
+    return num %2==0
+
+result=filter(even,num)
+print(list(result))
+
+
+
+
+   
+    
+
+
+
+   
+
+    
 
     
 
