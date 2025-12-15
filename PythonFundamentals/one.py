@@ -408,7 +408,7 @@ class Dog():
 
 milo=Dog('lab','milo')
 
-"""
+# normal way
 
 class Circle:
     pi=3.14
@@ -431,6 +431,152 @@ class Circle:
 c=Circle()
 c.setRadius(2)
 print('Area is ', c.area())
+
+
+#15 dec
+
+class Circle:
+    p1=3.14
+    def __init__(self):
+        pass
+
+    @property
+    def area(self):
+        return self.radius * self.radius *Circle.pi
+    
+    @property
+    def radius_value(self):  # getters
+        return self.radius
+    
+    @radius_value.setter
+    def radius_value(self,value):
+        self.radius=value
+
+c= Circle()
+c.radius_value=2
+
+print('radius is : ', c.radius_value)
+print('Area is ', c.area)
+
+
+class Person:
+    def __init__(self,name,email,age):
+        self.name=name
+        self.email=email
+        self.age=age
+    
+    def __str__(self):
+        return f'{self.name} is {self.age} years old and has {self.email}'
+
+p1=Person('Agasya' , 'kou@gmail.com' , 28)
+p2=Person('Auro' , 'Auro@email.com', 33)
+
+print(p1)
+print(p2)
+
+
+class Person:
+    def __init__(self,**kwargs):
+        self.__dict__=kwargs
+
+    def __str__(self):
+        return f'{self.name} is {self.age} years old '
+    
+p1=Person(name='agasya' , age =28 )
+p2=Person(name='auro' , age= 33)   # only works for key value 
+
+print(p1)
+print(p2)
+
+class Something:
+    def __init__(self,data:dict):
+        self.__dict__=data
+
+    def __str__(self):
+        str_rep=' ' #empty for available info
+        for key,value in self.__dict__.items():
+            str_rep+= f'{key} = {value} , '
+        return str_rep
+    
+    def __str__(self):
+        str_rep =' '
+
+        return ','.join(f'{key}={value}' for key,value in self.__dict__.items())
+    #first write for loop the write key=value 
+
+
+data_dict1= {
+    'a':10,
+    'b':20,
+    'c':30,
+    'name':'ll'
+}
+
+
+s1 = Something(data_dict1)
+print(s1)
+
+
+
+
+class Point:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+   
+    #string rep of object 
+    def __repr__(self):
+        return f'Point(x={self.x} , y={self.y})'
+    
+    def __str__(self):
+        return f'Point object with (x={self.x} , y{self.y})'
+
+point1= Point(10,20)
+#print(point1.x , point1.y)
+print(point1)
+print(repr(point1))
+"""
+
+class Point:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+
+    def __eq__(self, other):
+        return self.x==other.x and self.y==other.y
+
+point1=Point(10,20)
+point2=Point(10,20)
+
+print(point1==point2)
+
+#swap code 
+
+
+class Point:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+
+    def swap_xy(self):
+        self.x,self.y=self.y,self.x
+point1=Point(10,20)
+
+point1.swap_xy()
+print(point1.x,point1.y)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
