@@ -535,7 +535,6 @@ point1= Point(10,20)
 #print(point1.x , point1.y)
 print(point1)
 print(repr(point1))
-"""
 
 class Point:
     def __init__(self,x,y):
@@ -564,6 +563,112 @@ point1=Point(10,20)
 
 point1.swap_xy()
 print(point1.x,point1.y)
+#---------------------------------------------------------------------------------
+#17 dec 
+
+#inheritance
+
+class A:
+    def __init__(self,value):
+        print(f'In A.__init__ and value is = {value}')
+        self.value=value
+
+class B(A):    #B is inheriting from A
+    def __init__(self, value):
+        print(f'In B.__init__ and value is {value}')
+        super().__init__(value)
+        self.value+=10
+
+class C(A):
+    def __init__(self, value):
+        print(f'In C.__init__ and value is {value}')
+        super().__init__(value)
+        self.value*=4
+class D(C,B):  #multiple inheritance
+    def __init__(self, value):
+        print(f'In D.__init__ and value is {value}')
+        super().__init__(value)  # even we use many classes we use one super
+
+d=D(10)   #first looks at D and then its uper b then c and then its super a
+print(d.value)  
+print(D.mro())  
+
+
+
+
+class Animal:        #base class
+    def __init__(self):
+        print('Animal created')
+    
+    def WhoAmI(self):
+        print('Animal')
+    
+    def eat(self):
+        print('eating........')
+
+class Dog(Animal):     #derived classs
+    def __init__(self):
+        print('Dog Created')
+
+    def WhoAmI(self):
+        print('Dog')
+
+    def bark(self):
+        print("woooof!")
+
+d= Dog()
+d.WhoAmI()
+d.eat()
+d.bark()
+
+
+"""
+
+
+class Employee:
+    increase =1.04    # all classses hsare this
+    def __init__(self,first_name,last_name,salary):
+        self.first_name=first_name
+        self.last_name=last_name
+        self.salary=salary
+    
+    def __str__(self):
+        return f'Employee name is {self.first_name}{self.last_name}, and earns {self.salary} salary'
+    
+    def increase_sal(self):
+        self.salary=int(self.salary*self.increase)
+
+class Developer(Employee):
+    increase =1.10
+    def __init__(self, first_name, last_name, salary,prog_lang):
+        super().__init__(first_name, last_name, salary)
+        self.prog_lang=prog_lang
+
+    def __str__(self):
+        return f'{super().__str__()} and fav prog lang is {self.prog_lang}'
+
+
+
+e1=Employee('Auro','Drake', 45000)
+e2=Employee('krishna','koumudi', 40000)
+
+dev1=Developer('carl','season',70000,'python')
+
+print ('before increase:')
+print(e1)
+print(e2)
+print(dev1)
+
+e1.increase_sal()
+e2.increase_sal()
+dev1.increase_sal()
+
+print('after increase')
+print(e1)
+print(e2)
+print(dev1)
+
+
 
 
 
