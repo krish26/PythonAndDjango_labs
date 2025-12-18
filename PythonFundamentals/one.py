@@ -622,9 +622,6 @@ d.eat()
 d.bark()
 
 
-"""
-
-
 class Employee:
     increase =1.04    # all classses hsare this
     def __init__(self,first_name,last_name,salary):
@@ -667,6 +664,121 @@ print('after increase')
 print(e1)
 print(e2)
 print(dev1)
+
+#18 dec 
+
+#polimorphism-many forms 
+
+#one buttor diff devices diff behaviour 
+
+
+def make_it_upper(s):
+    return s.upper()
+
+class shouty:
+    def __init__(self,text):
+        self.text=text
+    def upper(self):
+        return self.text.upper() +'!!!'
+
+#print(make_it_upper('hello'))
+#print(make_it_upper(shouty('hello')))
+
+
+
+#2 types of coding 
+#defensive coding - 1. look before you leap 2. easier to ask permission
+
+#1
+
+#if isinstance(x,str):
+   # print(x.upper())
+
+#2
+
+def safe_upper(x):
+    try:
+        return x.upper()
+    except AttributeError:
+        return str(x).upper()
+    
+#print(safe_upper('h1'))
+#print(safe_upper(123))
+#print(safe_upper(shouty('hi')))
+
+#first we define base class 
+#we define subclass
+#subclasses override methods
+
+
+class Animal:
+    def speak(self):
+        raise NotImplementedError   #you must override the method in subclasses 
+    
+class Dog(Animal):
+    def speak(self):
+        return "Woof!!"
+    
+class Cat(Animal):
+    def speak(self):
+        return "Meowww"
+
+print(Dog().speak())
+print(Cat().speak())
+
+"""
+
+
+#Abstract base class - thse make the rules explicit 
+#it has methods that are impl by subclasses 
+#it says what methods shoud exixst for the obj
+
+
+from abc import ABC, abstractmethod 
+import json
+class Serializer(ABC):
+    @abstractmethod    #this is decorator that this method should exixsts in all subclasses
+    def serialize(self,obj):
+        pass # no impl here subclass is responsible 
+
+class JsonSerializer(Serializer):
+    def serialize(self, obj):
+        return json.dumps(obj)
+    
+
+js=JsonSerializer()
+print(js.serialize({'name':'kk'}))
+
+
+class SimpleCsvSerializer(Serializer):
+    def serialize(self, obj):
+        keys=obj[0].keys()
+        lines=[','.join(keys)]
+        for row in obj:
+            lines.append(",".join(str(row[k])for k in keys))
+
+        return "\n".join(lines)
+    
+csv=SimpleCsvSerializer()
+print(csv.serialize([
+    {'name':'koumudi','age':28},
+    {'name':'kkkk','age':29}
+]))
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 
 
 
