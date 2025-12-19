@@ -726,9 +726,6 @@ class Cat(Animal):
 print(Dog().speak())
 print(Cat().speak())
 
-"""
-
-
 #Abstract base class - thse make the rules explicit 
 #it has methods that are impl by subclasses 
 #it says what methods shoud exixst for the obj
@@ -765,7 +762,170 @@ print(csv.serialize([
     {'name':'kkkk','age':29}
 ]))
 
+-------------------------------------------------------------------------------
+#imports
 
+#dec 19th 
+
+from math import sqrt as sq # from math library import sqrt fn, can write sq insted of sqrt
+import math
+
+from math import*  # its bad because it causes name conflicts
+
+def sqrt(num):
+    return 'hello'
+
+print(sqrt(25))   # prints hello because of the fn 
+
+print(math.sqrt(25)) # gets the ans , better to use math.sqrt insted of just importing 
+
+
+
+
+print(sq(25))  # no name ambiquity problem 
+
+
+#to split a project into several modules 
+
+
+
+#decorator 
+
+def my_decorator(func):
+    def wrapper():  #wrapper is necessary , 
+        print('something happining before fnvis called')
+        func()
+        print('something happining after fn is called ')
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print('helo')
+
+#call dec fun
+say_hello()
+
+
+
+#decor with arguments
+
+def my_decorator(func):
+    def wrapper(*args,**kwargs):
+        print(f'Arguments passed to the fn :{args} {kwargs}')
+        result=func(*args,**kwargs)
+        print(f'fn returned : {result}')
+        return result
+    return wrapper
+
+@my_decorator
+def add(a,b):
+    return a+b
+
+add(5,10)
+
+#static method 
+
+#dont operate on class data , they act as regular fn they belong to class namespace 
+
+class MathHelper:
+    @staticmethod   #does not req self , it will not use any class data so no init method or no self
+    def adder(x,y):
+        return x+y
+    
+print(MathHelper.adder(10,2))
+
+
+#built in decorator 
+
+# @functools.wraps ( saves the metadata )
+
+
+import functools
+
+def my_decorator(func):
+    @functools.wraps(func)
+    def wrapper(*args,**kwargs):
+        print(f'calling {func.__name__}') 
+        return func(*args,**kwargs)
+    return wrapper
+
+@my_decorator
+def greet(name):
+    print(f'hello , {name}')
+
+greet('koumudi')
+
+
+#we can pass fn as args to other functions -py is a fnctional programming 
+#higher ordered fn 
+
+
+def apply(func,value):  #higher ordered fn coz it take other fn as arg
+    return func(value)
+
+def square(x):
+    return x*x
+
+def cube(x):
+    return x*x*x
+
+
+print(apply(square,3))
+print(apply(cube,8))
+
+def apply(func,value):  #higher ordered fn coz it take other fn as arg
+    return func(value)
+
+
+def square(x):
+    return x*x
+
+sq_lambda = lambda x:x*x
+print(sq_lambda(6))
+print(square(9))
+
+
+print(apply(lambda x:x *x +10, 5))
+"""
+
+
+
+
+#recurssive fn  & memoization
+#recursion can be bad so we use memoization what it does is store values
+
+# can be inefficient for large data , 
+#memoization cache the data and reuse if the same input occurs 
+
+
+def fact(num):
+    if num== 0:
+        return 1
+    return num* fact(num-1)
+
+print(fact(5))
+
+
+
+
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fibonacci(num):
+    if num <=1 :
+        return num
+    else:
+        return fibonacci(num-1) + fibonacci(num-2)
+    
+print(fibonacci(20))
+print(fibonacci.cache_info())
+
+
+
+
+
+
+# imports, decorators, recurssive , high order fn , built in dec , 
 
 
 
