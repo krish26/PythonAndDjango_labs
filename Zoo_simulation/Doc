@@ -1,0 +1,25 @@
+Impemented base class Animal()->name,age,energy attr-> sleep() eat() interact() methods
+Carnivour module witch has 3 child class (Lion,Wolf,Eagle)
+herbivour module with 3 child classes (Elephant,Deer,Giraffe)
+visitor classwith animal interaction method, feeding()
+Main() module for simulation of a day in the zoo with morning feeding, 
+afternoon interaction, night sleeping
+
+
+
+
+#todo:
+Figure out how to make animal interaction more dynamic and interesting
+
+implement animal energy levels affecting their behavior and maybe some warnings if the energy is low 
+
+maybe clean up the output formatting for better readability
+
+making each animal a dictonary so we can add more animals of same type easily , like user input??
+
+like add new animal :enter which animal you want to add and ask their names and ages and put in that dictonary
+
+find better way to show simulation of a day in zoo
+
+
+
