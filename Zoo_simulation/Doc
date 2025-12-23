@@ -4,14 +4,22 @@ herbivour module with 3 child classes (Elephant,Deer,Giraffe)
 visitor classwith animal interaction method, feeding()
 Main() module for simulation of a day in the zoo with morning feeding, 
 afternoon interaction, night sleeping
+done -implement animal energy levels affecting their behavior and maybe some warnings if the energy is low 
+
+
+
 
 
 
 
 #todo:
 Figure out how to make animal interaction more dynamic and interesting
+animal interaction effecting them like maybe a chance of injury ? so animal_healh() method 
+checke duplicated logic 
+encapsulation and resue 
+predator prey system fo extension 
 
-implement animal energy levels affecting their behavior and maybe some warnings if the energy is low 
+SEPERATE SIMULATION LOGIC FROM EXECUTION LOGIC 
 
 maybe clean up the output formatting for better readability
 

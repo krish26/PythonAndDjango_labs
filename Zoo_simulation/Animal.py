@@ -4,7 +4,7 @@ import random
 class Animal(ABC):
     GROUP='none'
 
-    def __init__(self,name,age,energy=60):
+    def __init__(self,name,age,energy=1): #1-3 is low energy, 4-7 is medium, 8-10 is high
         self.name=name
         self.age=age
         self.energy=energy
@@ -21,10 +21,10 @@ class Animal(ABC):
     #energy handling methods
     def change_energy(self, amount):
         self.energy += amount
-        self.energy = max(0, min(self.energy, 100))
+        self.energy = max(0, min(self.energy, 10))  # Clamp between 0 and 10
 
     def daily_drain(self):
-        self.change_energy(-15)
+        self.change_energy(-1)  # Daily energy drain
       
     #abstract methods 
 
@@ -36,46 +36,26 @@ class Animal(ABC):
     def sleep(self):
         pass
 
-    #interaction methods 
-    # 30% chance animal does NOT interact
-
-    def interact(self, others):  
-
-        if self.energy < 10:  #too tired to interact
-            print(f"{self.name} is too exhausted to interact.")
-            self.change_energy(-3)
-            return
+    def interact(self, others):
         
-        if random.random() < 0.3:
-            if Animal.GROUP == "carnivore":
-                print(f"{self.name} growls and refuses to interact.")
-                self.energy -= 10
-            elif Animal.GROUP == "herbivore":
-                print(f"{self.name} is shy and avoids interaction.")
-                self.energy -= 25
-            return
+        if self.energy < 3:
+            print(f"{self.name} the {self.__class__.__name__} is too tired to interact.")
+            self.change_energy(-2)
+            return []
 
-        same_group = [a for a in others if a.GROUP == self.GROUP]
-
-        if same_group:
-            partner = random.choice(same_group)
-            print(f"{self.name} interacts with {partner.name} ({self.GROUP})")
-            self.energy += 20
-        else:
-            print(f"{self.name} finds no one to interact with.")
-            self.energy -= 20
-
-        # Exhaustion check
-        if self.energy <= 20:
-            print(f"{self.name} is exhausted!")
-
-    
-
-
-
-
-
-
-
+        if(random.random() < 0.5):  # 50% chance to not be in the mood
+            print(f"{self.name} the {self.__class__.__name__} is not in the mood to interact.")
+            self.change_energy(-3)
+            if(self.GROUP == "carnivore"):
+                self.change_energy(-1)
+            else:
+                self.change_energy(-4)
+            return []
+        
+        interacted = random.sample(others, min(2, len(others)))
+        for animal in interacted:
+            print(f"{self.name} the {self.__class__.__name__} interacts with {animal.name} the {animal.__class__.__name__}")
+            self.change_energy(+2)
+        return interacted
 
 

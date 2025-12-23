@@ -10,7 +10,7 @@ animals=[Lion('Simba',2),
          Giraffe('Tally',2)
          ]
 
-Visitor=Visitor()
+Visitor=Visitor(animals)
 
 n = int(input('Enter number of days you want to simulate :'))
 
@@ -18,14 +18,17 @@ for day in range(1,n+1):
     for animal in animals:
         animal.daily_drain()
 
-    print('Morning : Food Time ')
+    print(f'Morning : Food Time ')
     for animal in animals:
         animal.eat()
         
-    print('Afternoon : Animals interaction time ')
-    for animal in animals:
-        others=animal.interact([a for a in animals if a != animal])
+    print('Afternoon : Interaction Time ')
+    for i, animal in enumerate(animals):
+        others = animals[:i] + animals[i+1:]
+        animal.interact(others)
 
+    print('Visitor Time ')
+    Visitor.Visit(animals)
 
     print('Night: Sleeping time ')
     for animal in animals:
