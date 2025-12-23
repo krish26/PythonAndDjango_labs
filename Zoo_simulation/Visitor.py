@@ -25,11 +25,10 @@ class Visitor:
         for animal in self.animals:
             print(f'- {animal.name} the {animal.__class__.__name__}')
         animal_choice= input(f'which animal do you want to feed?').strip()
-
-
         for animal in self.animals:
             if animal_choice.lower() == animal.name.lower():
                 print(f'{animal.name} has been fed by the visitor.')
+                animal.change_energy(2)
                 animal.eat()
                 return
         print(f'No animal named {animal_choice} found in the zoo.')

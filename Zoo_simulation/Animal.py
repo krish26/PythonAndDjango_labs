@@ -43,13 +43,13 @@ class Animal(ABC):
             self.change_energy(-2)
             return []
 
-        if(random.random() < 0.5):  # 50% chance to not be in the mood
+        if(random.random() < 0.3):  # 30% chance to not be in the mood
             print(f"{self.name} the {self.__class__.__name__} is not in the mood to interact.")
             self.change_energy(-3)
             if(self.GROUP == "carnivore"):
                 self.change_energy(-1)
             else:
-                self.change_energy(-4)
+                self.change_energy(-3)
             return []
         
         interacted = random.sample(others, min(2, len(others)))
