@@ -47,37 +47,4 @@ for day in range(1,n+1):
     print("-" * 60)
     for animal in animals:
         print(animal)
-     
-     
 
-
-
-
-
-
-'''
-
-
-lion= Lion()
-Wolf=Wolf()
-Eagle=eagle()
-
-elephant=Elephant()
-deer= Deer()
-giraffe=Giraffe()
-
-
-lion.eat()
-Wolf.eat()
-Eagle.eat()
-
-lion.sleep()
-Wolf.sleep()
-Eagle.sleep()
-
-
-
-
-
-
-'''
