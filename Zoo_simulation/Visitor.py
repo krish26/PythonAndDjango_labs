@@ -19,18 +19,19 @@ class Visitor:
         elif(choice == '3'):
             print('Thank you for visiting the zoo! Goodbye!')
 
+        healthy_animals = [a for a in animals if not a.sick]
 
-    def feed(self, animal):
+
+  #sick_animal is ignored while visitor is feeding animals
+    def feed(self,healthy_animals):
         print('Animals available to feed:')
-        for animal in self.animals:
+        for animal in healthy_animals:
             print(f'- {animal.name} the {animal.__class__.__name__}')
         animal_choice= input(f'which animal do you want to feed?').strip()
-        for animal in self.animals:
+        for animal in healthy_animals:
             if animal_choice.lower() == animal.name.lower():
                 print(f'{animal.name} has been fed by the visitor.')
                 animal.change_energy(2)
                 animal.eat()
                 return
-        print(f'No animal named {animal_choice} found in the zoo.')
-
-    
+        print(f'No healthy animal named {animal_choice} found in the zoo.')
