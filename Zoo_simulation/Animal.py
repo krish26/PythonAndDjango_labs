@@ -94,6 +94,7 @@ class Animal(ABC):
       if random.random() < 0.2:
         self.sick = True
         print(f"\n {self.name} the {self.__class__.__name__} has become sick !")
+        self.change_energy(-3)
       else:
         self.sick = False
 

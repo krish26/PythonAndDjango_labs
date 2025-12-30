@@ -32,7 +32,7 @@ for day in range(1,n+1):
         animal.interact(others)
 
     print(f'\n--- VISITOR TIME ---\n')
-    Visitor.Visit(animals)
+    Visitor.Visit()
 
     print(f'\n--- NIGHT ---\n')
     for animal in animals:
