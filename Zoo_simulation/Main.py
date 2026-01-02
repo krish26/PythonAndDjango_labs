@@ -16,15 +16,12 @@ n = int(input('Enter number of days you want to simulate :'))
 
 for day in range(1,n+1):
     print(f'\n--- Day {day} ---\n')
-    for animal in animals:
-        animal.daily_drain()
-
-    for animal in animals:
-        animal.recover()
 
     print(f'\n--- MORNING---\n')
     for animal in animals:
+        animal.daily_drain()
         animal.eat()
+        animal.recover()
         
     print(f'\n--- AFTERNOON ---\n')
     for i, animal in enumerate(animals):
@@ -37,8 +34,6 @@ for day in range(1,n+1):
     print(f'\n--- NIGHT ---\n')
     for animal in animals:
         animal.sleep()
-
-    for animal in animals:
         animal.check_health()
         
     print(f"\n Zoo day simulation completed \n")
