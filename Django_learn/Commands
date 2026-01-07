@@ -16,3 +16,17 @@ to run python shell(interactive mode ): python manage.py shell
 
 -----Database queries---
 
+
+
+
+
+
+
+-------conda-------
+to create env : create --name env_name python=version_num
+to check env : conda info --encs
+to activate : conda activate django_env name
+deactivate : conda deactivate
+install django : pip install django--1.11
+to create project : django-admin startproject first_project
+
