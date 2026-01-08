@@ -10,5 +10,4 @@ my_dict = { 'message':'Welcome ',
 
 def index(request):
     context={'my_dict': my_dict}
-
     return render(request, 'first_app/index.html', context)
