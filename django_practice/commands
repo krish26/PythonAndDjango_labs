@@ -1,0 +1,9 @@
+conda create -n envname python=3.x  |  Conda create --name MyDjangoEnv python=3.6
+
+conda activate envname
+conda install package
+conda env list
+conda deactivate
+django-admin startproject project_name
+python manage.py runserver
+python manage.py startapp app_name

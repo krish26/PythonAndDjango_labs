@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'first_app/CSS/main.css' %}">
+</head>
+<body>
+    <div>
+    <h1>{{ my_dict.message }}</h1>
+    <p>My name is {{my_dict.name | upper}} and iam studying {{my_dict.course | upper}}</p>
+    <p>This course will be completed in {{my_dict.days}} days</p>
+    </div> 
+    
+    <img src="{% static 'first_app/images/1.webp' %}" alt="Django Logo"></img>
+</body>
+</html>
