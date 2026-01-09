@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from first_app.models import Topic,Webpage,AccessRecord
 
-
-my_dict = { 'message':'Welcome ',
-                 'course': 'Python Ai and ML course',
-                  'days': 60,
-                  'name':'krishna koumudi'
-            }
 
 def index(request):
-    context={'my_dict': my_dict}
-    return render(request, 'first_app/index.html', context)
+    webpages=Webpage.objects.all()
+    Acc_records=AccessRecord.objects.all()
+    context={
+        'webpages':webpages,
+        'Acc_records':Acc_records
+    }
+    return render(request, 'first_app/index.html',context)
