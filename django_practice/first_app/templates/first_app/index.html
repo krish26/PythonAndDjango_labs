@@ -6,18 +6,23 @@
 </head>
 <body>
     <h1>Here are your access records</h1>
+    {% if access_records %}
 <table>
   <tr>
     <th>Site Name</th>
     <th>Data Accessed</th>
   </tr>
-  {% for record in Acc_records %}
+  {% for record in access_records %}
   <tr>
-    <td>{{ record.name.name }}</td>
+    <td>{{ record.name }}</td>
     <td>{{ record.date }}</td>
   </tr>
   {% endfor %}
 </table>
+{% else %}
+<p>No accesses records found </p>
+{% endif%}
+
 
 </body>
 </html>

@@ -1,0 +1,13 @@
+first : in the views.py we import any modes we will nedd to display
+second : use the view to query the models for data that will need .
+third: pass results to the models templattes
+fourth: edit the template so that it is ready to accept and display
+fifth: map url to the view 
+
+
+template tagging : using {{}}  {% %}
+
+----forms------
+
+GET req data from resource
+POST submit data to processed
