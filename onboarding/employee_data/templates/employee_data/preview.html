@@ -1,0 +1,13 @@
+{% extends "employee_data/base.html" %}
+{% block body-block %}
+<section class="bg-white text-center py-5 min-vh-100">
+    <div class="container">
+        <h1 class="display-5 fw-bold">{{ user.username }} profile preview</h1>
+        <p class="lead mt-5">
+              <p><strong>Username:</strong> {{ user.username }}</p>
+              <p><strong>Email:</strong> {{ user.email }}</p>
+        </p>
+
+    </div>
+</section>
+{% endblock %}

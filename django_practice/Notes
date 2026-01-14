@@ -11,3 +11,68 @@ template tagging : using {{}}  {% %}
 
 GET req data from resource
 POST submit data to processed
+
+
+---------authentication-----------
+use pbkdf algorithm using sha256 hash to hash password which is built in django algo
+decrypt library aswell
+in settings.py Auth_password_validator we can have validators like must use nums and alphabet 
+min letters etc 
+
+install library for hashing
+pip install django[argon2]
+pip install bcrypt 
+
+in settings.py:
+PASSWORD_HASHERS=[
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BcryptSHA256PasswordHasher'
+    'django.contrib.auth.hashers.BcryptPasswordHasher'
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher'
+    'django.contrib.auth.hashers.PBKDFSHA1PasswordHasher'
+]
+
+add TEMPLATE_DIR, in dirs[]
+
+TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')
+STATIC_DIR
+MEDIA_DIR
+
+to work with images(save images) we need a library called pillow (pip install pillow)
+
+
+
+
+For anyone who finds the folder structure confusing:
+I usually create a base folder, for example MyWebsite.
+Then I cd into that folder and run:
+django-admin startproject config .
+This creates a config folder containing the settings, and initializes the Django project directly inside MyWebsite.
+ 
+So instead of getting MyWebsite/MyWebsite
+you get MyWebsite/config
+
+
+
+
+------------------------------------------------------project flow-------------------------------------------
+
+-create project
+-cd to project
+-create app 
+-add the app in installed apps in settings.py
+-do makemigrations and migrate 
+-create templates/appname, static , media folders 
+-html pages in templates, js and css in static, images in media 
+-create urls.py in app folder
+-if templates,static and media are in the project dir the add this stuff in settings .py if its in the app dir then no need
+add TEMPLATE_DIR, in dirs[]
+
+TEMPLATE_DIR=os.path.join(BASE_DIR,'templates')
+STATIC_DIR
+MEDIA_DIR
+
+-do tempalate tagging and write code fr pages
+-in order to use the inbuilt user table which has username,ps, firstname,last name we import (from django.contrib.auth.models import User) in models 
+-in forms.py have 2 classes -one for user inbuilt data and one for extra data
+
