@@ -17,3 +17,5 @@ for sql fake data
 
 
 use Fakers library (pip install faker)
+
+regx(r'^other/$')
