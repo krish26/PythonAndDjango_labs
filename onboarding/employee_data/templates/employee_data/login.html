@@ -1,0 +1,20 @@
+{% extends "employee_data/base.html" %}
+
+{% block body-block %}
+
+<div class="jumbotron">
+    <h1>Login</h1>
+    <form action="{% url 'employee_data:login' %}" method="POST">
+        {% csrf_token %}
+        <label form="username">username</label>
+        <input type="text" name="username" placeholder="Enter username">
+
+        <label form="password">Password</label>
+        <input type="password" name="password">
+
+        <input type="submit" value="Login">
+    </form>
+ 
+</div>
+
+{% endblock %}

@@ -1,14 +1,26 @@
 from django.shortcuts import render,get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
 from employee_data.forms import AccountDetailsForm,OnboardingDetailsForm
 from employee_data.models import EmployeeProfileInfo
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 
 
 def home(request):
     return render(request, 'employee_data/home.html')
+
+@login_required
+def user_logout(request):
+     logout(request)
+     return HttpResponseRedirect(reverse('home'))
+
+@login_required
+def special(request):
+     login(request)
 
 
 def register(request):
@@ -61,4 +73,29 @@ def preview(request,user_id):
                         'user': user,
                         'profile': profile
                       })
+
+
+def user_login(request):
+     if request.method =='POST':
+          username = request.POST.get('username')
+          password = request.POST.get('password')
+
+          #django builtin authentication
+
+          user = authenticate(username=username,password=password)
+          if user:
+                if user.is_active:
+                    login(request,user)
+                    return HttpResponseRedirect(reverse('employee_data/home.html'))
+                else:
+                     return HttpResponse("ACCOUNT NOT ACTIVE")
+          else:
+               print('someone tried to login and failed')
+               print('username:{} and password:{}'.format(username,password))
+          return HttpResponse("invalid login detailes")
+     else:
+          return render(request,'employee_data/login.html')
+               
+          
+
 
